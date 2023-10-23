@@ -9,7 +9,9 @@ class TreeNode:
 @dataclass
 class BinaryTree:
     root: TreeNode = None
-
+    def bad_insert(self, value1, value2):
+        self.root.left_child = TreeNode(value1)
+        self.root.right_child = TreeNode(value2)
     def insert(self, value):
         if not self.root:
             self.root = TreeNode(value)
@@ -130,6 +132,12 @@ if __name__ == "__main__":
     binary_tree.deleteTree()
     print("deleted")
     print(binary_tree.in_order_traversal())
+
+    binary_tree2 = BinaryTree()
+    binary_tree2.insert(15)
+    binary_tree2.bad_insert(20, 10)
+    print(binary_tree2.in_order_traversal())
+    print(isBST(binary_tree2))
     """
     print(binary_tree.search(65))  # Output: True
     print(binary_tree.search(9))  # Output: False
