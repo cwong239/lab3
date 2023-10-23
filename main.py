@@ -94,6 +94,29 @@ class BinaryTree:
             print(current_node.value, end=' ')
             self._in_order_recursive(current_node.right_child)
 
+def isBST(tree):
+    return _isBST_recursive(tree.root)
+
+def _isBST_recursive(current_node):
+
+    if current_node is not None:
+        if current_node.left_child is not None:
+            if current_node.left_child.value < current_node.value:
+                return _isBST_recursive(current_node.left_child)
+            else:
+                return False
+        else:
+            pass
+    if current_node is not None:
+        if current_node.right_child is not None:
+            if current_node.right_child.value > current_node.value:
+                return _isBST_recursive(current_node.right_child)
+            else:
+                return False
+        else:
+            pass
+    return True
+
 
 # Example usage:
 if __name__ == "__main__":
@@ -102,8 +125,8 @@ if __name__ == "__main__":
 
     for element in elements:
         binary_tree.insert(element)
-
     print(binary_tree.in_order_traversal())
+    print(isBST(binary_tree))
     binary_tree.deleteTree()
     print("deleted")
     print(binary_tree.in_order_traversal())
