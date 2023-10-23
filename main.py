@@ -80,6 +80,21 @@ class BinaryTree:
             current = current.left_child
         return current.value
 
+    def deleteTree(self):
+        while self.root is not None:
+            self.delete(self.root.value)
+
+    def in_order_traversal(self):
+        self._in_order_recursive(self.root)
+        print()
+
+    def _in_order_recursive(self, current_node):
+        if current_node is not None:
+            self._in_order_recursive(current_node.left_child)
+            print(current_node.value, end=' ')
+            self._in_order_recursive(current_node.right_child)
+
+
 # Example usage:
 if __name__ == "__main__":
     binary_tree = BinaryTree()
@@ -88,6 +103,11 @@ if __name__ == "__main__":
     for element in elements:
         binary_tree.insert(element)
 
+    print(binary_tree.in_order_traversal())
+    binary_tree.deleteTree()
+    print("deleted")
+    print(binary_tree.in_order_traversal())
+    """
     print(binary_tree.search(65))  # Output: True
     print(binary_tree.search(9))  # Output: False
     print("Original Binary Search Tree:")
@@ -106,4 +126,4 @@ if __name__ == "__main__":
     # Deleting a node with two children
     binary_tree.delete(88)
     print("Binary Search Tree after deleting 88:")
-    print(binary_tree.search(88))  # Output: False
+    print(binary_tree.search(88))  # Output: False """""
