@@ -81,7 +81,25 @@ class BinaryTree:
         while current.left_child is not None:
             current = current.left_child
         return current.value
-
+        
+    def lowest_common_ancestor(self, node1, node2):
+        return self.lowest_common_ancestor_recursive(self.root, node1, node2)
+        
+    def lowest_common_ancestor_recursive(self, ancestor, node1, node2):
+        ancestor = self.root
+        if node1 or node2 == self.root:
+            return self.root
+        else:
+            if self._search_recursive(ancestor, node1.value) is True and self._search_recursive(ancestor, node2.value) is True:
+                if node1.value < ancestor.value and node2.value < ancestor.value:
+                    self.lowest_common_ancestor_recursive(ancestor.left_child, node1, node2)
+                elif node1.value > ancestor.value and node2.value > ancestor.value:
+                    self.lowest_common_ancestor_recursive(ancestor.right_child, node1, node2)
+                else:
+                    return ancestor.value
+            else:
+                return print("Error: No common ancestor found")
+                
     def deleteTree(self):
         while self.root is not None:
             self.delete(self.root.value)
@@ -138,6 +156,12 @@ if __name__ == "__main__":
     binary_tree2.bad_insert(20, 10)
     print(binary_tree2.in_order_traversal())
     print(isBST(binary_tree2))
+
+    print(binary_tree.lowest_common_ancestor(8, 32) # Output: 17
+    print(binary_tree.lowest_common_ancestor(17, 93) # Output: 44
+    print(binary_tree.lowest_common_ancestor(88, 65) # Output: 88
+    print(binary_tree.lowest_common_ancestor(5, 78) # Output: "Error: no common ancestor found."
+          
     """
     print(binary_tree.search(65))  # Output: True
     print(binary_tree.search(9))  # Output: False
