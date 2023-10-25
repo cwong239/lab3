@@ -81,6 +81,17 @@ class BinaryTree:
         while current.left_child is not None:
             current = current.left_child
         return current.value
+
+    def convertToSortedArray(self):
+        sorted_array = self._convert_recursive(self.root, [])
+        return sorted_array
+
+    def _convert_recursive(self, current_node, array):
+        if current_node is not None:
+            self._convert_recursive(current_node.left_child, array)
+            array.append(current_node.value)
+            self._convert_recursive(current_node.right_child, array)
+            return array
         
     def lowest_common_ancestor(self, node1, node2):
         return self.lowest_common_ancestor_recursive(self.root, node1, node2)
@@ -151,6 +162,9 @@ if __name__ == "__main__":
     print("deleted")
     print(binary_tree.in_order_traversal())
 
+    # Convert the tree to a sorted array
+    print(binary_tree.convertToSortedArray()) # Output: [8, 17, 32, 44, 54, 65, 78, 80, 82, 88, 93, 97]
+
     binary_tree2 = BinaryTree()
     binary_tree2.insert(15)
     binary_tree2.bad_insert(20, 10)
@@ -182,3 +196,5 @@ if __name__ == "__main__":
     binary_tree.delete(88)
     print("Binary Search Tree after deleting 88:")
     print(binary_tree.search(88))  # Output: False """""
+
+    
