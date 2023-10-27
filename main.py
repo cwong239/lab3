@@ -171,10 +171,10 @@ if __name__ == "__main__":
     print(binary_tree2.in_order_traversal())
     print(isBST(binary_tree2))
 
-    print(binary_tree.lowest_common_ancestor(8, 32) # Output: 17
-    print(binary_tree.lowest_common_ancestor(17, 93) # Output: 44
-    print(binary_tree.lowest_common_ancestor(88, 65) # Output: 88
-    print(binary_tree.lowest_common_ancestor(5, 78) # Output: "Error: no common ancestor found."
+    print(binary_tree.lowest_common_ancestor(8, 32)) # Output: 17
+    print(binary_tree.lowest_common_ancestor(17, 93)) # Output: 44
+    print(binary_tree.lowest_common_ancestor(88, 65)) # Output: 88
+    print(binary_tree.lowest_common_ancestor(5, 78)) # Output: "Error: no common ancestor found."
           
     """
     print(binary_tree.search(65))  # Output: True
